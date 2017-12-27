@@ -189,7 +189,8 @@ namespace IBMiCmd.IBMiTools
 #endif
                 lines.Add("quit");
 
-                File.WriteAllLines(tempfile, lines.ToArray());
+                System.Text.Encoding enc = System.Text.Encoding.GetEncoding("shift_jis");   //SJIS
+                File.WriteAllLines(tempfile, lines.ToArray(), enc);    //SJIS 
                 result = RunFTP(tempfile);
                 File.Delete(tempfile);
 

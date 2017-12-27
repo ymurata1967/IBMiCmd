@@ -59,6 +59,7 @@ namespace IBMiCmd.IBMiTools
             if (Lib == "*CURLIB") Lib = IBMi.GetConfig("curlib");
 
             commands.Add("ASCII");
+            commands.Add("quote type b 1"); //SJIS
             commands.Add("cd /QSYS.lib");
             commands.Add("recv \"" + Lib + ".lib/" + Obj + ".file/" + Mbr + ".mbr\" \"" + filetemp + "\"");
 
@@ -83,6 +84,7 @@ namespace IBMiCmd.IBMiTools
             if (Lib == "*CURLIB") Lib = IBMi.GetConfig("curlib");
 
             commands.Add("ASCII");
+            commands.Add("quote type b 1"); //SJIS
             commands.Add("cd /QSYS.lib");
             commands.Add("put \"" + Local + "\" \"" + Lib + ".lib/" + Obj + ".file/" + Mbr + ".mbr\"");
 

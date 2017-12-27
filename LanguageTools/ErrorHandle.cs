@@ -28,13 +28,15 @@ namespace IBMiCmd.LanguageTools
             if (lib == "*CURLIB") lib = IBMi.GetConfig("curlib");
 
             commands.Add("ASCII");
+            commands.Add("quote type b 1"); //SJIS
             commands.Add("cd /QSYS.lib");
             commands.Add("recv \"" + lib + ".lib/EVFEVENT.file/" + obj + ".mbr\" \"" + filetemp + "\"");
 
             IBMi.RunCommands(commands.ToArray());
 
+            System.Text.Encoding enc = System.Text.Encoding.GetEncoding("shift_jis");   //SJIS
             ErrorHandle.doName(lib.ToUpper() + '/' + obj.ToUpper());
-            ErrorHandle.setLines(File.ReadAllLines(filetemp));
+            ErrorHandle.setLines(File.ReadAllLines(filetemp, enc)); //SJIS
         }
 
         public static string doName(string newName = "")
