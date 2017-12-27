@@ -98,7 +98,7 @@ namespace IBMiCmd.Forms
         private static string replaceVars(string cmd)
         {
             OpenMember currentMember = null;
-            string path = Path.GetFileName(NppFunctions.GetCurrentFileName());
+            string path = NppFunctions.GetCurrentFileName();
             string[] name;
 
             if (path.Contains("."))
